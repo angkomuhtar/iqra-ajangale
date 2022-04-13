@@ -1,50 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Auth from "layouts/Auth.js";
 import Swal from "sweetalert2";
 
+// layout for page
+
+import Auth from "layouts/Auth.js";
+
 export default function Login() {
-  const [field, setField] = useState({
+  const [field, setFields] = useState({
     username: "",
     password: "",
   });
 
-  const formHandler = async () => {
-    if (field.username == "" || field.password == "") {
-      Swal.fire({
-        text: "Data Belum Lengkap",
-        title: "Info",
-        icon: "warning",
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    } else {
-      fetch("api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-type": "Application/json",
-        },
-        body: JSON.stringify(field),
-      })
-        .then((res) => {
-          if (!res.ok) {
-            if (res.status == 401) {
-              Swal.fire({
-                text: "Pengguna Tidak Ditemukan",
-                title: "Perhatian",
-                icon: "warning",
-                timer: 2000,
-                showConfirmButton: false,
-              });
-            }
-          } else {
-            console.log("berhasil");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+  useEffect(() => {
+    console.log(field);
+  });
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    alert("test");
   };
 
   return (
@@ -52,14 +27,20 @@ export default function Login() {
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-4/12 px-4">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
-              <div className="rounded-t mb-0 p-3 flex justify-center bg-slate-500">
-                <div className="btn-wrapper text-center">
-                  <img className="mr-1 w-[12rem]" src="/img/brand/iqra.png" />
+            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-200 border-0">
+              <div className="rounded-t mb-0 px-6 py-6">
+                <div className="text-center mb-3">
+                  <h6 className="text-slate-500 text-sm font-bold">
+                    Sign in with
+                  </h6>
                 </div>
+                <hr className="mt-6 border-b-1 border-slate-300" />
               </div>
-              <div className="flex-auto px-4 lg:px-10 py-10">
-                <form>
+              <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                <div className="text-slate-400 text-center mb-3 font-bold">
+                  <small>Or sign in with credentials</small>
+                </div>
+                <form onSubmit={submitHandler.bind(this)} action="#">
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-slate-600 text-xs font-bold mb-2"
@@ -68,15 +49,15 @@ export default function Login() {
                       Email
                     </label>
                     <input
+                      type="email"
                       onChange={(e) => {
-                        setField({
+                        setFields({
                           ...field,
                           username: e.target.value,
                         });
                       }}
-                      type="text"
                       className="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      placeholder="Username"
+                      placeholder="Email"
                     />
                   </div>
 
@@ -89,7 +70,7 @@ export default function Login() {
                     </label>
                     <input
                       onChange={(e) => {
-                        setField({
+                        setFields({
                           ...field,
                           password: e.target.value,
                         });
@@ -101,7 +82,27 @@ export default function Login() {
                   </div>
                   <div className="text-center mt-6">
                     <button
-                      onClick={() => formHandler()}
+                      onClick={() => {
+                        Swal.fire({
+                          toast: true,
+                          icon: "warning",
+                          title: "warning",
+                          position: "top-end",
+                          showConfirmButton: false,
+                          timer: 2000,
+                          timerProgressBar: true,
+                          didOpen: (toast) => {
+                            toast.addEventListener(
+                              "mouseenter",
+                              Swal.stopTimer
+                            );
+                            toast.addEventListener(
+                              "mouseleave",
+                              Swal.resumeTimer
+                            );
+                          },
+                        });
+                      }}
                       className="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
                     >
@@ -109,6 +110,24 @@ export default function Login() {
                     </button>
                   </div>
                 </form>
+              </div>
+            </div>
+            <div className="flex flex-wrap mt-6 relative">
+              <div className="w-1/2">
+                <a
+                  href="#pablo"
+                  onClick={(e) => e.preventDefault()}
+                  className="text-slate-200"
+                >
+                  <small>Forgot password?</small>
+                </a>
+              </div>
+              <div className="w-1/2 text-right">
+                <Link href="/auth/register">
+                  <a href="#pablo" className="text-slate-200">
+                    <small>Create new account</small>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
