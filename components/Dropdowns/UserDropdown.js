@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { createPopper } from "@popperjs/core";
 
 const UserDropdown = () => {
   // dropdown props
-  const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
+  const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
   const openDropdownPopover = () => {
@@ -19,7 +19,6 @@ const UserDropdown = () => {
     <>
       <a
         className="text-slate-500 block"
-        href="#pablo"
         ref={btnDropdownRef}
         onClick={(e) => {
           e.preventDefault();
@@ -36,6 +35,7 @@ const UserDropdown = () => {
           </span>
         </div>
       </a>
+      <div className="w-full h-full bg-black"></div>
       <div
         ref={popoverDropdownRef}
         className={

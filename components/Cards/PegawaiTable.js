@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { AiOutlinePlus } from "react-icons/ai";
 
 // components
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
+import Link from "next/link";
 
 export default function PegawaiTable({ color }) {
   return (
@@ -25,6 +27,14 @@ export default function PegawaiTable({ color }) {
               >
                 Pegawai Tables
               </h3>
+            </div>
+            <div className="">
+              <Link href="pegawai">
+                <button className="bg-blue-500 px-3 py-2 flex justify-center items-center rounded-sm text-white text-sm font-light capitalize">
+                  <AiOutlinePlus className="mr-2" />
+                  tambah Pegawai
+                </button>
+              </Link>
             </div>
           </div>
         </div>
