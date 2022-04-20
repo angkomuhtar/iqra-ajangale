@@ -89,7 +89,7 @@ export default function PegawaiTable({ data, color }) {
               {data == "" ? (
                 <tr>
                   <td
-                    colspan="6"
+                    colSpan="6"
                     className="text-center p-2 text-sm font-semibold "
                   >
                     Tidak ada Data
