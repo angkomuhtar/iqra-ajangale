@@ -38,7 +38,12 @@ exports.up = function (knex) {
       table.string("tidak_sedang_pidana", 70);
       table.timestamps(true, true);
 
-      table.foreign("pegawai").references("id").inTable("pegawai");
+      table
+        .foreign("pegawai")
+        .references("id")
+        .inTable("pegawai")
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
     });
 };
 

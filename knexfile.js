@@ -1,23 +1,23 @@
 module.exports = {
-  staging: {
+  production: {
     client: "mysql",
     connection: {
-      host: "us-cdbr-east-05.cleardb.net",
+      host: "localhost",
       port: 3306,
-      user: "ba80cda7d248ed",
-      password: "41b108c9",
-      database: "heroku_d5759c96f214167",
+      user: "root",
+      password: "iqra-sql",
+      database: "iqra",
     },
   },
 
   development: {
-    client: process.env.DB_CLIENT || "mysql",
+    client: "mysql",
     connection: {
-      host: process.env.DB_HOST || "127.0.0.1",
+      host: "127.0.0.1",
       port: 3306,
-      user: process.env.DB_USERNAME || "root",
-      password: process.env.DB_PASSWORD || "",
-      database: process.env.DB_NAME || "iqra-next",
+      user: "root",
+      password: "",
+      database: "iqra-next",
     },
   },
 };

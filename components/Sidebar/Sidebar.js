@@ -114,7 +114,7 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link href="/admin/tables">
+                <Link href="/admin/kp4">
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
@@ -126,7 +126,7 @@ export default function Sidebar() {
                     <AiFillIdcard
                       className={
                         "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/tables") !== -1
+                        (router.pathname.indexOf("/admin/kp4") !== -1
                           ? "opacity-75"
                           : "text-slate-300")
                       }
@@ -136,11 +136,11 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/admin/tables">
+                <Link href="/admin/pensiun">
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/dashboard") !== -1
+                      (router.pathname.indexOf("/admin/pensiun") !== -1
                         ? "text-sky-500 hover:text-sky-600"
                         : "text-slate-700 hover:text-slate-500")
                     }
@@ -148,7 +148,7 @@ export default function Sidebar() {
                     <AiFillIdcard
                       className={
                         "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/tables") !== -1
+                        (router.pathname.indexOf("/admin/pensiun") !== -1
                           ? "opacity-75"
                           : "text-slate-300")
                       }
@@ -158,7 +158,7 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/admin/tables">
+                <Link href="/admin/pangkat">
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
@@ -170,7 +170,7 @@ export default function Sidebar() {
                     <AiFillIdcard
                       className={
                         "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/tables") !== -1
+                        (router.pathname.indexOf("/admin/pangkat") !== -1
                           ? "opacity-75"
                           : "text-slate-300")
                       }
@@ -192,7 +192,7 @@ export default function Sidebar() {
                     <AiFillIdcard
                       className={
                         "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/tables") !== -1
+                        (router.pathname.indexOf("/admin/gaji_berkala") !== -1
                           ? "opacity-75"
                           : "text-slate-300")
                       }

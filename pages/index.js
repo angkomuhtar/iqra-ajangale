@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Auth from "layouts/Auth.js";
 import Swal from "sweetalert2";
-import animationData from "/components/9844-loading-40-paperplane";
 import Router from "next/router";
+import animationData from "/components/9844-loading-40-paperplane";
 import Lottie from "react-lottie";
 
 export default function Login() {
