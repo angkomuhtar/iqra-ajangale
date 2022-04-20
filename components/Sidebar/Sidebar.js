@@ -118,7 +118,7 @@ export default function Sidebar() {
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/dashboard") !== -1
+                      (router.pathname.indexOf("/admin/kp4") !== -1
                         ? "text-sky-500 hover:text-sky-600"
                         : "text-slate-700 hover:text-slate-500")
                     }
@@ -162,7 +162,7 @@ export default function Sidebar() {
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/dashboard") !== -1
+                      (router.pathname.indexOf("/admin/pangkat") !== -1
                         ? "text-sky-500 hover:text-sky-600"
                         : "text-slate-700 hover:text-slate-500")
                     }
@@ -180,11 +180,11 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/admin/tables">
+                <Link href="/admin/gaji_berkala">
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/dashboard") !== -1
+                      (router.pathname.indexOf("/admin/gaji_berkala") !== -1
                         ? "text-sky-500 hover:text-sky-600"
                         : "text-slate-700 hover:text-slate-500")
                     }

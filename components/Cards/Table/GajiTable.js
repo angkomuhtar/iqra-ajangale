@@ -1,13 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { BsFillXCircleFill, BsCheckCircleFill } from "react-icons/bs";
 import { MdCloudDownload } from "react-icons/md";
-
-// components
-
 import Link from "next/link";
 import Image from "next/image";
+import FieldList from "./FieldList";
 
 export default function GajiTable({ data, color }) {
   return (
@@ -70,68 +67,21 @@ export default function GajiTable({ data, color }) {
                       </span>
                     </div>
                   </th>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-red-700">
-                        <BsFillXCircleFill />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-green-500 cursor-pointer">
-                        <MdCloudDownload />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-red-700">
-                        <BsFillXCircleFill />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-green-500 cursor-pointer">
-                        <MdCloudDownload />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-red-700">
-                        <BsFillXCircleFill />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-green-500 cursor-pointer">
-                        <MdCloudDownload />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-red-700">
-                        <BsFillXCircleFill />
-                      </span>
-                    </div>
-                  </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <div className="flex items-center justify-center">
-                      <span className="mr-2 text-lg text-green-500 cursor-pointer">
-                        <MdCloudDownload />
-                      </span>
-                    </div>
-                  </td>
+                  <FieldList data={val.pengantar_pimpinan} />
+                  <FieldList data={val.kgb} />
+                  <FieldList data={val.kenaikan_pangkat} />
+                  <FieldList data={val.pelantikan_terakhir} />
+                  <FieldList data={val.skp_1tahun} />
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
-                      <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
-                        <AiOutlineEdit />
-                        <span className="text-xs ml-2">update</span>
-                      </button>
+                      <Link
+                        href={"berkas/" + val.id_pegawai + "/gaji%20berkala"}
+                      >
+                        <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
+                          <AiOutlineEdit />
+                          <span className="text-xs ml-2">update</span>
+                        </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

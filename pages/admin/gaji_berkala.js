@@ -1,21 +1,34 @@
-import React from "react";
-
-// components
-
-import GajiTable from "components/Cards/GajiTable";
-import CardProfile from "components/Cards/CardProfile.js";
-
-// layout for page
-
+import React, { useState, useEffect } from "react";
+import GajiTable from "components/Cards/Table/GajiTable";
 import Admin from "layouts/Admin.js";
+import axios from "axios";
 
 function Gaji({ jabatan }) {
-  console.log(jabatan);
+  const getData = () => {
+    axios
+      .get("/api/pangkat")
+      .then((res) => {
+        setDatalist(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: "Error",
+          text: "Terjadi Kesalahan Sistem",
+          icon: "error",
+        });
+      });
+  };
+  const [datalist, setDatalist] = useState([]);
+  useEffect(() => {
+    getData();
+  });
+
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="w-full lg:w-full px-4">
-          <GajiTable />
+      <div className="flex flex-wrap mt-4">
+        <div className="w-full mb-12 px-4">
+          <GajiTable data={datalist} />
         </div>
       </div>
     </>
@@ -24,4 +37,4 @@ function Gaji({ jabatan }) {
 
 Gaji.layout = Admin;
 
-export default Pegawai;
+export default Gaji;

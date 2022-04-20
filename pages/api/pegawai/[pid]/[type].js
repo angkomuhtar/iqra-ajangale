@@ -20,7 +20,17 @@ export default async (req, res) => {
       break;
     case "update":
       break;
-    case "show":
+    case "berkas":
+      const pegawai = await db("berkas")
+        .where("pegawai", pid)
+        .join("pegawai", "berkas.pegawai", "=", "pegawai.id")
+        .select("berkas.*", "pegawai.nip", "pegawai.name")
+        .first();
+      // console.log(pid);
+      if (!pegawai) return res.status(500).json({ message: "Server Error" });
+      return res
+        .status(200)
+        .json({ message: "Delete Successfull", status: "ok", data: pegawai });
       break;
     default:
       return res.status(404).end();
