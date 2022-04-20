@@ -48,8 +48,8 @@ export default function GajiTable({ data, color }) {
               </tr>
             </thead>
             <tbody>
-              {data.map((val) => (
-                <tr>
+              {data.map((val, key) => (
+                <tr key={key}>
                   <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                     <div className="h-10 w-10 relative">
                       <Image
