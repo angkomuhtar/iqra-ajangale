@@ -11,7 +11,6 @@ function Tables({ response }) {
       .get("/api/pangkat")
       .then((res) => {
         setDatalist(res.data.data);
-        console.log(res.data.data);
       })
       .catch((err) => {
         Swal.fire({

@@ -22,7 +22,7 @@ export default function Sidebar() {
             <i className="fas fa-bars"></i>
           </button>
           {/* Brand */}
-          <Link href="/">
+          <Link href="/admin/dashboard">
             <a
               href="#pablo"
               className="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm font-bold p-4 px-0"
@@ -114,6 +114,29 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
+                <Link href="/admin/pangkat">
+                  <a
+                    className={
+                      "text-xs uppercase py-3 font-bold flex items-center justify-center" +
+                      (router.pathname.indexOf("/admin/pangkat") !== -1
+                        ? "text-sky-500 hover:text-sky-600"
+                        : "text-slate-700 hover:text-slate-500")
+                    }
+                  >
+                    <AiFillIdcard
+                      className={
+                        "mr-2 text-lg " +
+                        (router.pathname.indexOf("/admin/pangkat") !== -1
+                          ? "opacity-75"
+                          : "text-slate-300")
+                      }
+                    />
+                    kenaikan Pangkat
+                  </a>
+                </Link>
+              </li>
+
+              <li className="items-center">
                 <Link href="/admin/kp4">
                   <a
                     className={
@@ -157,28 +180,7 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="items-center">
-                <Link href="/admin/pangkat">
-                  <a
-                    className={
-                      "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/pangkat") !== -1
-                        ? "text-sky-500 hover:text-sky-600"
-                        : "text-slate-700 hover:text-slate-500")
-                    }
-                  >
-                    <AiFillIdcard
-                      className={
-                        "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/pangkat") !== -1
-                          ? "opacity-75"
-                          : "text-slate-300")
-                      }
-                    />
-                    kenaikan Pangkat
-                  </a>
-                </Link>
-              </li>
+
               <li className="items-center">
                 <Link href="/admin/gaji_berkala">
                   <a

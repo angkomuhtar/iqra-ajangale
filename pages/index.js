@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Router from "next/router";
 import animationData from "/components/9844-loading-40-paperplane";
 import Lottie from "react-lottie";
+import { getCookie, setCookies } from "cookies-next";
 
 export default function Login() {
   const [field, setField] = useState({
@@ -51,11 +52,24 @@ export default function Login() {
               });
             }
           } else {
-            Router.push("/admin/dashboard");
+            return res.json();
           }
         })
+        .then((loginRes) => {
+          setCookies("token", loginRes.token);
+          Swal.fire({
+            text: "Berhasil Login",
+            title: "Sukses",
+            icon: "success",
+          });
+          Router.push("/admin");
+        })
         .catch((err) => {
-          console.log(err);
+          Swal.fire({
+            text: "Terjadi Kesalahan Login",
+            title: "Error",
+            icon: "error",
+          });
         })
         .finally(() => {
           setLoading(false);

@@ -13,7 +13,6 @@ function Tables({ response }) {
       .get("/api/kp4")
       .then((res) => {
         setDatalist(res.data.data);
-        console.log(res.data);
       })
       .catch((err) => {
         Swal.fire({
@@ -43,7 +42,6 @@ export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`${process.env.BASE_URL}/api/kp4`);
   const Pegawai = await res.json();
-  // console.log("data", res);
   // Pass data to the page via props
   return { props: { response: Pegawai } };
 }

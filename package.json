@@ -20,6 +20,7 @@
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "chart.js": "^3.7.1",
+    "cookies-next": "^2.0.4",
     "dotenv": "^16.0.0",
     "formidable": "^2.0.1",
     "formidable-serverless": "^1.1.1",

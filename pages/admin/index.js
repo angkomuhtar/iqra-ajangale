@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Admin from "layouts/Admin.js";
 import PegawaiTable from "components/Cards/Table/PegawaiTable";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
 
 function Tables({ response }) {
   const [pegawai, setPegawai] = useState([]);
   const getData = async () => {
     const res = await fetch(`/api/pegawai`);
     const resPegawai = await res.json();
-    // console.log(resPegawai);
     setPegawai(resPegawai.data);
   };
 

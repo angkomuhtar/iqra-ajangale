@@ -26,7 +26,6 @@ export default async (req, res) => {
         .join("pegawai", "berkas.pegawai", "=", "pegawai.id")
         .select("berkas.*", "pegawai.nip", "pegawai.name")
         .first();
-      // console.log(pid);
       if (!pegawai) return res.status(500).json({ message: "Server Error" });
       return res
         .status(200)
@@ -36,5 +35,4 @@ export default async (req, res) => {
       return res.status(404).end();
       break;
   }
-  console.log(pid, type);
 };

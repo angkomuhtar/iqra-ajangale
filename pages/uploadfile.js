@@ -13,14 +13,12 @@ export default function PrivatePage(props) {
 
   const uploadToServer = async (event) => {
     const body = new FormData();
-    // console.log("file", image)
     body.append("file", image);
     body.append("test", image);
     const response = await fetch("/api/hello", {
       method: "POST",
       body,
     });
-    console.log(response);
   };
 
   return (

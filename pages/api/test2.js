@@ -9,7 +9,6 @@ export default async (req, res) => {
     form.maxFileSize = 10 * 1024 * 1024; // 10mb
     form.keepExtensions = true;
     form.onPart = function (part) {
-      console.log(part);
       // if (part.name != "file")
       //   this._error(
       //     new Error(

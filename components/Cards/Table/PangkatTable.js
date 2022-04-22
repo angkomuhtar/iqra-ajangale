@@ -110,10 +110,12 @@ export default function PangkatTable({ data, color }) {
                   <FieldList data={val.pembebasan_jabatan_fungsional} />
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
-                      <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
-                        <AiOutlineEdit />
-                        <span className="text-xs ml-2">update</span>
-                      </button>
+                      <Link href={`/admin/berkas/${val.id_pegawai}/pangkat`}>
+                        <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
+                          <AiOutlineEdit />
+                          <span className="text-xs ml-2">update</span>
+                        </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

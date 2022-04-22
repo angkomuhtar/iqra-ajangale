@@ -27,7 +27,6 @@ export default async (req, res) => {
     key.push(val);
   });
 
-  console.log(data[0]);
   const pegawai = await db("pegawai").insert(data[0]);
   if (pegawai) {
     fs.mkdir(`./public/berkas/${pegawai}`, { recursive: true }, (err) => {});
