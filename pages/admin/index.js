@@ -3,6 +3,17 @@ import Admin from "layouts/Admin.js";
 import PegawaiTable from "components/Cards/Table/PegawaiTable";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
+import { verifyToken } from "lib/auth";
+
+export async function getServerSideProps(ctx) {
+  const token = getCookie("token");
+  await verifyToken(ctx);
+  return {
+    props: {
+      token: "tets",
+    },
+  };
+}
 
 function Tables({ response }) {
   const [pegawai, setPegawai] = useState([]);
