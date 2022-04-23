@@ -1,63 +1,118 @@
 import { IncomingForm } from "formidable";
-import fs from "fs";
+import { promises as fs } from "fs";
+import db from "lib/db";
+
+var mv = require("mv");
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export default async (req, res) => {
-  return new Promise(async function (resolve, reject) {
-    const form = new IncomingForm();
-    const directoryPath = "./public/test-upload/";
+  var newPath = "";
+  var namefile = "";
 
-    form.maxFileSize = 10 * 1024 * 1024; // 10mb
-    form.keepExtensions = true;
-    form.onPart = function (part) {
-      // if (part.name != "file")
-      //   this._error(
-      //     new Error(
-      //       "Yalnızca 'file' parametresi altında gönderilen dosyalar kabul edilir."
-      //     )
-      //   );
-      // else if (part.filename == "")
-      //   this._error(new Error("Dosya adı boş bırakılamaz."));
-      // else if (!part.filename.match(/\.(py|txt)$/i))
-      //   this._error(
-      //     new Error("Kabul edilen dosya türleri şunlardır: .py, .txt")
-      //   );
-      // else if (part.filename.length > 50)
-      //   this._error(
-      //     new Error("Dosyanın adı en fazla 50 karakter olabilir.")
-      //   );
-      // else {
-      //   if (!fs.existsSync(directoryPath)) fs.mkdirSync(directoryPath);
-      //   else if (fs.existsSync(directoryPath + "/" + part.filename))
-      //     this._error(
-      //       new Error(
-      //         "Dosya karşıya yüklenemedi. Sunucu üzerinde aynı isimde bir dosya bulunuyor."
-      //       )
-      //     );
-      //   this.handlePart(part);
-      // }
-    };
-    form.on("fileBegin", function (name, file) {
-      file.path = directoryPath + "/" + file.name;
-      // fs.mv(file.filepath, file.path, function (err) {});
-      console.log(file.path);
-    });
-
-    form.parse(req, async function (err, fields, files) {
-      if (err) reject(err);
-      // else {
-      //   const querySelect: any = `INSERT INTO log_files (user_id, file_name, file_status) VALUES (?, ?, ?)`;
-      //   await db
-      //     .query(querySelect, [result.id, files.file.name, 1])
-      //     .then((result: any) => {
-      //       resolve({
-      //         result: result.affectedRows,
-      //         message: "Dosya yüklemesi başarılı.",
-      //       });
-      //     })
-      //     .catch((err) => {
-      //       reject(new Error("Dosya yüklendi ancak günlüğe yazılamadı."));
-      //     });
-      // }
+  // parsing file from multipart
+  const data = await new Promise((resolve, reject) => {
+    const form = new IncomingForm({ multiples: true });
+    form.parse(req, (err, fields, files) => {
+      if (err) return reject(err);
+      resolve([fields, files]);
     });
   });
+
+  // Using trx as a transaction object:
+  const trx = await db.transaction();
+  const test = await trx("pegawai")
+    .insert(data[0], "id")
+    .then(async function (ids) {
+      await trx("berkas").insert({ pegawai: ids[0] });
+      await fs.mkdir(
+        `./public/berkas/${ids[0]}`,
+        { recursive: true },
+        (err) => {
+          if (err) throw err;
+        }
+      );
+    })
+    .then(trx.commit)
+    .catch((err) => {
+      return err;
+    });
+
+  if (trx.isCompleted()) {
+    return res.status(200).send(test);
+  } else {
+    return res.status(301).send(test?.sqlMessage || test);
+  }
+
+  await db
+    .transaction(function (trx) {
+      db.insert(data[0], "id")
+        .into("pegawai")
+        .transacting(trx)
+        .then(async (ids) => {
+          const berkas = await db("berkas").insert({ pegawai: ids });
+        })
+        .then(trx.commit)
+        .catch(trx.rollback);
+    })
+    .then(function (inserts) {
+      console.log(inserts.length + " new books saved.");
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  return res.status(200).send("last");
+  let key = [];
+  Object.keys(data[1]).map((val) => {
+    key.push(val);
+  });
+  // cek if nip exist
+  const cek = await db("pegawai").where("nip", data[0].nip).first();
+  if (cek) {
+    return res.status(200).json({
+      status: "invalid",
+      message: `Pegawai dengan NIP ${cek.nip} sudah ada`,
+    });
+  }
+
+  db.transaction((trx) => {
+    trx("pegawai").insert(data[0]);
+  });
+
+  const pegawai = await db("pegawai").insert(data[0]);
+  // const berkas = await db("berkas").insert({ pegawai: pegawai });
+  try {
+    fs.mkdir(`./public/berkas/${pegawai}`, { recursive: true });
+  } catch (error) {
+    return res.status(200).json({
+      status: "invalid",
+      message: `Pegawai dengan NIP ${cek.nip} sudah ada`,
+    });
+  }
+  if (pegawai) {
+    key.map((val) => {
+      var oldPath = data[1][val].filepath;
+      var type = data[1][val].originalFilename.split(".");
+      namefile = `${val}.${type[type.length - 1]}`;
+      newPath = `./public/berkas/${pegawai}/${namefile}`;
+      mv(oldPath, newPath, function (err) {});
+    });
+    const update = await db("pegawai")
+      .where("id", "=", `${pegawai}`)
+      .update({
+        photo: `${namefile}`,
+      });
+    if (update) {
+      res.status(200).json({
+        status: "ok",
+        message: "Data Berhasil Disimpan",
+      });
+    } else {
+      res.status(500).end();
+    }
+  }
 };

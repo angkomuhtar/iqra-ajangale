@@ -23,7 +23,7 @@ function Tables({ response }) {
   const [datalist, setDatalist] = useState([]);
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   return (
     <>

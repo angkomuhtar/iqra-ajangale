@@ -16,23 +16,11 @@ export async function getServerSideProps(ctx) {
 }
 
 function Tables({ response }) {
-  const [pegawai, setPegawai] = useState([]);
-  const getData = async () => {
-    const res = await fetch(`/api/pegawai`);
-    const resPegawai = await res.json();
-    setPegawai(resPegawai.data);
-  };
-
-  useEffect(() => {
-    //   const res = await fetch(`${process.env.BASE_URL}/api/pegawai`);
-    getData();
-  });
-
   return (
     <>
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 px-4">
-          <PegawaiTable data={pegawai} />
+          <PegawaiTable />
         </div>
       </div>
     </>

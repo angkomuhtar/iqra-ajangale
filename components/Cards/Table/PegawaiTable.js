@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
@@ -9,7 +9,19 @@ import Link from "next/link";
 import Image from "next/image";
 import Swal from "sweetalert2";
 
-export default function PegawaiTable({ data, color }) {
+export default function PegawaiTable({ color }) {
+  const [pegawai, setPegawai] = useState([]);
+  const getData = async () => {
+    const res = await fetch(`/api/pegawai`);
+    const resPegawai = await res.json();
+    setPegawai(resPegawai.data);
+  };
+
+  useEffect(() => {
+    //   const res = await fetch(`${process.env.BASE_URL}/api/pegawai`);
+    getData();
+  }, []);
+
   const Hapus = (id) => {
     Swal.fire({
       icon: "warning",
@@ -25,7 +37,8 @@ export default function PegawaiTable({ data, color }) {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-          });
+          })
+          .finally(getData());
       }
     });
   };
@@ -86,7 +99,7 @@ export default function PegawaiTable({ data, color }) {
               </tr>
             </thead>
             <tbody>
-              {data == "" ? (
+              {pegawai.length < 1 ? (
                 <tr>
                   <td
                     colSpan="6"
@@ -96,11 +109,12 @@ export default function PegawaiTable({ data, color }) {
                   </td>
                 </tr>
               ) : (
-                data.map((val, key) => (
+                pegawai.map((val, key) => (
                   <tr key={key}>
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                       <div className="h-10 w-10 relative">
                         <Image
+                          alt=""
                           src={
                             val.photo
                               ? `/berkas/${val.id}/${val.photo}`

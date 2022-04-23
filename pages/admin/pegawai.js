@@ -3,7 +3,6 @@ import React from "react";
 // components
 
 import PegawaiForm from "components/Cards/Form/PegawaiForm.js";
-import CardProfile from "components/Cards/CardProfile.js";
 
 // layout for page
 

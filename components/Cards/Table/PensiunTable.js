@@ -90,6 +90,7 @@ export default function PensiunTable({ data, color }) {
                   <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                     <div className="h-10 w-10 relative">
                       <Image
+                        alt=""
                         src={val.photo ? val.photo : "/img/react.jpg"}
                         layout="fill"
                         className=" bg-white rounded-full border "

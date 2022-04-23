@@ -71,7 +71,7 @@ export default function PegawaiForm() {
           title: status,
           confirmButtonText: "Oke Siip",
         }).then(() => {
-          if (status == "ok") Router.push("/admin/dashboard");
+          if (status == "ok") Router.push("/admin");
         });
       })
       .finally(() => {
