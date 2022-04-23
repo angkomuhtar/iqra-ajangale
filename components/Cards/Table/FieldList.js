@@ -14,6 +14,7 @@ const FieldList = ({ data }) => {
             <a
               href={`/berkas/56/${data}`}
               target="_blank"
+              rel="noreferrer"
               className="flex justify-center items-center"
             >
               <MdCloudDownload />{" "}
