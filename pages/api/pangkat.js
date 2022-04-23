@@ -6,7 +6,7 @@ import { end } from "@popperjs/core";
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
-      const pegawaiList = await db("kenaikan_pangkat").select();
+      const pegawaiList = await db("pangkat").select();
       res.status(200).json({ message: "success", data: pegawaiList });
       break;
     default:

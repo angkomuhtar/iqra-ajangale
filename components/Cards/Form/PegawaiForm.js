@@ -13,6 +13,7 @@ export default function PegawaiForm() {
   const [loading, setLoading] = useState(false);
   const [jabatan, setJabatan] = useState([]);
   const [pangkat, setPangkat] = useState([]);
+  const [eselon, setEselon] = useState([]);
   const [photo, setPhoto] = useState([]);
   const {
     control,
@@ -89,10 +90,16 @@ export default function PegawaiForm() {
     const resp = await req.json();
     setPangkat(resp.data);
   };
+  const getEselon = async () => {
+    const req = await fetch("/api/eselon");
+    const resp = await req.json();
+    setEselon(resp.data);
+  };
 
   useEffect(() => {
     getJabatan();
     getPangkat();
+    getEselon();
   }, []);
 
   return (
@@ -408,7 +415,11 @@ export default function PegawaiForm() {
                       className="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     >
                       <option value="">Pilih Eselon</option>
-                      <option value="1">Kantor Kecamatan Ajangale</option>
+                      {eselon.map((val, key) => (
+                        <option key={key} value={val.id}>
+                          {val.value}
+                        </option>
+                      ))}
                     </select>
                     <div className="text-xs text-red-500 mt-2">
                       {errors.eselon && errors.eselon.message}
