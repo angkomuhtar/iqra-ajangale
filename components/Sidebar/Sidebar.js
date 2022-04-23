@@ -91,11 +91,11 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/admin/dashboard">
+                <Link href="/admin">
                   <a
                     className={
                       "text-xs uppercase py-3 font-bold flex items-center justify-center" +
-                      (router.pathname.indexOf("/admin/dashboard") !== -1
+                      (router.pathname.indexOf("/admin") !== -1
                         ? "text-sky-500 hover:text-sky-600"
                         : "text-slate-700 hover:text-slate-500")
                     }
@@ -103,7 +103,7 @@ export default function Sidebar() {
                     <AiFillIdcard
                       className={
                         "mr-2 text-lg " +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
+                        (router.pathname.indexOf("/admin") !== -1
                           ? "opacity-75"
                           : "text-slate-300")
                       }

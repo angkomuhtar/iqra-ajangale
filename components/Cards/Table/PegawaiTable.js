@@ -51,7 +51,7 @@ export default function PegawaiTable({ data, color }) {
               </h3>
             </div>
             <div className="">
-              <Link href="pegawai">
+              <Link href="admin/pegawai">
                 <button className="bg-blue-500 px-3 py-2 flex justify-center items-center rounded-sm text-white text-sm font-light capitalize">
                   <AiOutlinePlus className="mr-2" />
                   tambah Pegawai

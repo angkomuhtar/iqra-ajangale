@@ -18,7 +18,7 @@ export default function PangkatTable({ data, color }) {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-lg text-slate-700">
-                Berkas Pensiun
+                Berkas Kenaikan Pangkat
               </h3>
             </div>
           </div>
