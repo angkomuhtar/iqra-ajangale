@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 function Tables({ response }) {
   const getData = () => {
     axios
-      .get("/api/pangkat")
+      .get("/api/kenaikan_pangkat")
       .then((res) => {
         setDatalist(res.data.data);
       })
