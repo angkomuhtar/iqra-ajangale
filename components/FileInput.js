@@ -26,7 +26,9 @@ const FileInput = ({ fileValue, field, id, label }) => {
   return (
     <div className="rounded-lg mb-4 bg-white">
       <div className="m-4">
-        <label className="inline-block mb-2 text-gray-500">{label}</label>
+        <label className="inline-block mb-2 text-gray-500 text-sm">
+          {label}
+        </label>
         <div className="flex items-center justify-center w-full">
           <label className="flex flex-col justify-center items-center w-full h-20 border-2 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
             <div className="flex w-full items-center justify-center px-3">

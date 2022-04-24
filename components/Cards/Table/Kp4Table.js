@@ -84,22 +84,27 @@ export default function Kp4Table({ data, color }) {
                       </span>
                     </div>
                   </th>
-                  <FieldList data={val.cpns} />
-                  <FieldList data={val.sk_pangkat} />
-                  <FieldList data={val.npwp} />
-                  <FieldList data={val.ktp} />
-                  <FieldList data={val.norek} />
-                  <FieldList data={val.konversi_nip} />
-                  <FieldList data={val.akta_nikah} />
-                  <FieldList data={val.akta_kelahiran_anak} />
-                  <FieldList data={val.ket_kuliah} />
+                  <FieldList data={val.cpns} id={val.id_pegawai} />
+                  <FieldList data={val.sk_pangkat} id={val.id_pegawai} />
+                  <FieldList data={val.npwp} id={val.id_pegawai} />
+                  <FieldList data={val.ktp} id={val.id_pegawai} />
+                  <FieldList data={val.norek} id={val.id_pegawai} />
+                  <FieldList data={val.konversi_nip} id={val.id_pegawai} />
+                  <FieldList data={val.akta_nikah} id={val.id_pegawai} />
+                  <FieldList
+                    data={val.akta_kelahiran_anak}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.ket_kuliah} id={val.id_pegawai} />
 
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
-                      <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
-                        <AiOutlineEdit />
-                        <span className="text-xs ml-2">update</span>
-                      </button>
+                      <Link href={`/admin/berkas/${val.id_pegawai}/kp4`}>
+                        <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
+                          <AiOutlineEdit />
+                          <span className="text-xs ml-2">update</span>
+                        </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

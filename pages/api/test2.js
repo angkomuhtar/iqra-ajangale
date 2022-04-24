@@ -48,23 +48,6 @@ export default async (req, res) => {
     return res.status(301).send(test?.sqlMessage || test);
   }
 
-  await db
-    .transaction(function (trx) {
-      db.insert(data[0], "id")
-        .into("pegawai")
-        .transacting(trx)
-        .then(async (ids) => {
-          const berkas = await db("berkas").insert({ pegawai: ids });
-        })
-        .then(trx.commit)
-        .catch(trx.rollback);
-    })
-    .then(function (inserts) {
-      console.log(inserts.length + " new books saved.");
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
   return res.status(200).send("last");
   let key = [];
   Object.keys(data[1]).map((val) => {

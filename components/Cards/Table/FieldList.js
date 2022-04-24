@@ -3,7 +3,7 @@ import { BsFillXCircleFill } from "react-icons/bs";
 import { MdCloudDownload } from "react-icons/md";
 import Link from "next/link";
 
-const FieldList = ({ data }) => {
+const FieldList = ({ data, id }) => {
   return (
     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
       <div className="flex items-center justify-center">
@@ -12,7 +12,7 @@ const FieldList = ({ data }) => {
             <BsFillXCircleFill />
           ) : (
             <a
-              href={`/berkas/56/${data}`}
+              href={`/berkas/${id}/${data}`}
               target="_blank"
               rel="noreferrer"
               className="flex justify-center items-center"

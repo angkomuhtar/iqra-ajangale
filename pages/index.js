@@ -65,6 +65,7 @@ export default function Login() {
           Router.push("/admin");
         })
         .catch((err) => {
+          console.log(err);
           Swal.fire({
             text: "Terjadi Kesalahan Login",
             title: "Error",

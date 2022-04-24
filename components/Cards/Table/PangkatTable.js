@@ -96,19 +96,34 @@ export default function PangkatTable({ data, color }) {
                       </span>
                     </div>
                   </th>
-                  <FieldList data={val.pengantar_pimpinan} />
-                  <FieldList data={val.karpeg} />
-                  <FieldList data={val.cpns} />
-                  <FieldList data={val.sk_pangkat} />
-                  <FieldList data={val.pengangkatan_jabatan} />
-                  <FieldList data={val.penyataan_pelantikan} />
-                  <FieldList data={val.konversi_nip} />
-                  <FieldList data={val.skp_2tahun} />
-                  <FieldList data={val.stlud} />
-                  <FieldList data={val.latpim} />
-                  <FieldList data={val.ijazah_transkrip} />
-                  <FieldList data={val.kenaikan_pangkat_pimpinan} />
-                  <FieldList data={val.pembebasan_jabatan_fungsional} />
+                  <FieldList
+                    data={val.pengantar_pimpinan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.karpeg} id={val.id_pegawai} />
+                  <FieldList data={val.cpns} id={val.id_pegawai} />
+                  <FieldList data={val.sk_pangkat} id={val.id_pegawai} />
+                  <FieldList
+                    data={val.pengangkatan_jabatan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList
+                    data={val.penyataan_pelantikan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.konversi_nip} id={val.id_pegawai} />
+                  <FieldList data={val.skp_2tahun} id={val.id_pegawai} />
+                  <FieldList data={val.stlud} id={val.id_pegawai} />
+                  <FieldList data={val.latpim} id={val.id_pegawai} />
+                  <FieldList data={val.ijazah_transkrip} id={val.id_pegawai} />
+                  <FieldList
+                    data={val.kenaikan_pangkat_pimpinan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList
+                    data={val.pembebasan_jabatan_fungsional}
+                    id={val.id_pegawai}
+                  />
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
                       <Link href={`/admin/berkas/${val.id_pegawai}/pangkat`}>

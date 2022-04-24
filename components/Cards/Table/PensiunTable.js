@@ -105,29 +105,46 @@ export default function PensiunTable({ data, color }) {
                       </span>
                     </div>
                   </th>
-                  <FieldList data={val.pengantar_pimpinan} />
-                  <FieldList data={val.dafta_susunan_keluarga} />
-                  <FieldList data={val.tidak_pernah_pidana} />
-                  <FieldList data={val.tidak_sedang_pidana} />
-                  <FieldList data={val.anak_kandung} />
-                  <FieldList data={val.ket_kuliah} />
-                  <FieldList data={val.cpns} />
-                  <FieldList data={val.pns} />
-                  <FieldList data={val.kenaikan_pangkat} />
-                  <FieldList data={val.kartu_keluarga} />
-                  <FieldList data={val.akta_nikah} />
-                  <FieldList data={val.akta_kematian} />
-                  <FieldList data={val.akta_kelahiran_anak} />
-                  <FieldList data={val.skp_1tahun} />
-                  <FieldList data={val.mutasi_jabatan} />
-                  <FieldList data={val.photo3x4} />
+                  <FieldList
+                    data={val.pengantar_pimpinan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList
+                    data={val.dafta_susunan_keluarga}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList
+                    data={val.tidak_pernah_pidana}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList
+                    data={val.tidak_sedang_pidana}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.anak_kandung} id={val.id_pegawai} />
+                  <FieldList data={val.ket_kuliah} id={val.id_pegawai} />
+                  <FieldList data={val.cpns} id={val.id_pegawai} />
+                  <FieldList data={val.pns} id={val.id_pegawai} />
+                  <FieldList data={val.kenaikan_pangkat} id={val.id_pegawai} />
+                  <FieldList data={val.kartu_keluarga} id={val.id_pegawai} />
+                  <FieldList data={val.akta_nikah} id={val.id_pegawai} />
+                  <FieldList data={val.akta_kematian} id={val.id_pegawai} />
+                  <FieldList
+                    data={val.akta_kelahiran_anak}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.skp_1tahun} id={val.id_pegawai} />
+                  <FieldList data={val.mutasi_jabatan} id={val.id_pegawai} />
+                  <FieldList data={val.photo3x4} id={val.id_pegawai} />
 
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
-                      <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
-                        <AiOutlineEdit />
-                        <span className="text-xs ml-2">update</span>
-                      </button>
+                      <Link href={`/admin/berkas/${val.id_pegawai}/pensiun`}>
+                        <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
+                          <AiOutlineEdit />
+                          <span className="text-xs ml-2">update</span>
+                        </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>
