@@ -110,7 +110,7 @@ export default function PensiunTable({ data, color }) {
                     id={val.id_pegawai}
                   />
                   <FieldList
-                    data={val.dafta_susunan_keluarga}
+                    data={val.daftar_susunan_keluarga}
                     id={val.id_pegawai}
                   />
                   <FieldList

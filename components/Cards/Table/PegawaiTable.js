@@ -109,97 +109,159 @@ export default function PegawaiTable({ color }) {
                   </td>
                 </tr>
               ) : (
-                pegawai.map((val, key) => (
-                  <tr key={key}>
-                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                      <div className="h-10 w-10 relative">
-                        <Image
-                          alt=""
-                          src={
-                            val.photo
-                              ? `/berkas/${val.id}/${val.photo}`
-                              : "/img/react.jpg"
-                          }
-                          layout="fill"
-                          className=" bg-white rounded-full border "
-                        ></Image>
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="ml-3 font-bold text-slate-600">
-                          {val.name}
-                        </span>
-                        <span className="ml-3 font-light text-slate-600">
-                          {val.nip}
-                        </span>
-                      </div>
-                    </th>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center">
-                        <span className="mr-2">60%</span>
-                        <div className="relative w-full">
-                          <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                            <div
-                              style={{ width: "60%" }}
-                              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                            ></div>
+                pegawai.map((val, key) => {
+                  let gaji = Math.floor(
+                    (((val.pengantar_pimpinan == null ? 0 : 1) +
+                      (val.kgb == null ? 0 : 1) +
+                      (val.kenaikan_pangkat == null ? 0 : 1) +
+                      (val.pelantikan_terakhir == null ? 0 : 1) +
+                      (val.skp_1tahun == null ? 0 : 1)) /
+                      5) *
+                      100
+                  );
+                  let kp4 = Math.floor(
+                    (((val.cpns == null ? 0 : 1) +
+                      (val.sk_pangkat == null ? 0 : 1) +
+                      (val.npwp == null ? 0 : 1) +
+                      (val.ktp == null ? 0 : 1) +
+                      (val.norek == null ? 0 : 1) +
+                      (val.konversi_nip == null ? 0 : 1) +
+                      (val.akta_nikah == null ? 0 : 1) +
+                      (val.akta_kelahiran_anak == null ? 0 : 1) +
+                      (val.ket_kuliah == null ? 0 : 1)) /
+                      9) *
+                      100
+                  );
+                  let pensiun = Math.floor(
+                    (((val.pengantar_pimpinan == null ? 0 : 1) +
+                      (val.daftar_susunan_keluarga == null ? 0 : 1) +
+                      (val.tidak_pernah_pidana == null ? 0 : 1) +
+                      (val.tidak_sedang_pidana == null ? 0 : 1) +
+                      (val.anak_kandung == null ? 0 : 1) +
+                      (val.ket_kuliah == null ? 0 : 1) +
+                      (val.cpns == null ? 0 : 1) +
+                      (val.pns == null ? 0 : 1) +
+                      (val.kenaikan_pangkat == null ? 0 : 1) +
+                      (val.kartu_keluarga == null ? 0 : 1) +
+                      (val.akta_nikah == null ? 0 : 1) +
+                      (val.akta_kematian == null ? 0 : 1) +
+                      (val.akta_kelahiran_anak == null ? 0 : 1) +
+                      (val.skp_1tahun == null ? 0 : 1) +
+                      (val.mutasi_jabatan == null ? 0 : 1) +
+                      (val.photo3x4 == null ? 0 : 1)) /
+                      16) *
+                      100
+                  );
+                  let pangkat = Math.floor(
+                    (((val.pengantar_pimpinan == null ? 0 : 1) +
+                      (val.karpeg == null ? 0 : 1) +
+                      (val.cpns == null ? 0 : 1) +
+                      (val.sk_pangkat == null ? 0 : 1) +
+                      (val.pengangkatan_jabatan == null ? 0 : 1) +
+                      (val.penyataan_pelantikan == null ? 0 : 1) +
+                      (val.konversi_nip == null ? 0 : 1) +
+                      (val.skp_2tahun == null ? 0 : 1) +
+                      (val.stlud == null ? 0 : 1) +
+                      (val.latpim == null ? 0 : 1) +
+                      (val.ijazah_transkrip == null ? 0 : 1) +
+                      (val.kenaikan_pangkat_pimpinan == null ? 0 : 1) +
+                      (val.pembebasan_jabatan_fungsional == null ? 0 : 1)) /
+                      13) *
+                      100
+                  );
+
+                  return (
+                    <tr key={key}>
+                      <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                        <div className="h-10 w-10 relative">
+                          <Image
+                            alt=""
+                            src={
+                              val.photo
+                                ? `/berkas/${val.id}/${val.photo}`
+                                : "/img/react.jpg"
+                            }
+                            layout="fill"
+                            className=" bg-white rounded-full border "
+                          ></Image>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="ml-3 font-bold text-slate-600">
+                            {val.name}
+                          </span>
+                          <span className="ml-3 font-light text-slate-600">
+                            {val.nip}
+                          </span>
+                        </div>
+                      </th>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center">
+                          <span className="mr-2">{kp4}%</span>
+                          <div className="relative w-full">
+                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                              <div
+                                style={{ width: `${kp4}%` }}
+                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                              ></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center">
-                        <span className="mr-2">60%</span>
-                        <div className="relative w-full">
-                          <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                            <div
-                              style={{ width: "60%" }}
-                              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                            ></div>
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center">
+                          <span className="mr-2">{pensiun}%</span>
+                          <div className="relative w-full">
+                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                              <div
+                                style={{ width: `${pensiun}%` }}
+                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                              ></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center">
-                        <span className="mr-2">60%</span>
-                        <div className="relative w-full">
-                          <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                            <div
-                              style={{ width: "60%" }}
-                              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                            ></div>
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center">
+                          <span className="mr-2">{pangkat}%</span>
+                          <div className="relative w-full">
+                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                              <div
+                                style={{ width: `${pangkat}%` }}
+                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                              ></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center">
-                        <span className="mr-2">60%</span>
-                        <div className="relative w-full">
-                          <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                            <div
-                              style={{ width: "60%" }}
-                              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                            ></div>
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center">
+                          <span className="mr-2">{gaji}%</span>
+                          <div className="relative w-full">
+                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                              <div
+                                style={{ width: `${gaji}%` }}
+                                className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500`}
+                              ></div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex items-center space-x-1">
-                        <button className="border border-green-400 p-1 rounded-sm text-green-400 text-sm cursor-pointer">
-                          <AiOutlineEdit />
-                        </button>
-                        <button
-                          className="bg-red-400 p-1 rounded-sm text-white text-sm cursor-pointer"
-                          onClick={() => Hapus(val.id)}
-                        >
-                          <AiOutlineDelete />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                      </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <div className="flex items-center space-x-1">
+                          <button className="border border-green-400 p-1 rounded-sm text-green-400 text-sm cursor-pointer">
+                            <AiOutlineEdit />
+                          </button>
+                          <button
+                            className="bg-red-400 p-1 rounded-sm text-white text-sm cursor-pointer"
+                            onClick={() => Hapus(val.id)}
+                          >
+                            <AiOutlineDelete />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
