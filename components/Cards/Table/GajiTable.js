@@ -68,15 +68,21 @@ export default function GajiTable({ data, color }) {
                       </span>
                     </div>
                   </th>
-                  <FieldList data={val.pengantar_pimpinan} />
-                  <FieldList data={val.kgb} />
-                  <FieldList data={val.kenaikan_pangkat} />
-                  <FieldList data={val.pelantikan_terakhir} />
-                  <FieldList data={val.skp_1tahun} />
+                  <FieldList
+                    data={val.pengantar_pimpinan}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.kgb} id={val.id_pegawai} />
+                  <FieldList data={val.kenaikan_pangkat} id={val.id_pegawai} />
+                  <FieldList
+                    data={val.pelantikan_terakhir}
+                    id={val.id_pegawai}
+                  />
+                  <FieldList data={val.skp_1tahun} id={val.id_pegawai} />
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                     <div className="flex items-center justify-center space-x-1">
                       <Link
-                        href={"berkas/" + val.id_pegawai + "/gaji%20berkala"}
+                        href={`/admin/berkas/${val.id_pegawai}/gaji_berkala`}
                       >
                         <button className="bg-green-400 p-2 rounded-sm text-white text-sm cursor-pointer flex items-center">
                           <AiOutlineEdit />

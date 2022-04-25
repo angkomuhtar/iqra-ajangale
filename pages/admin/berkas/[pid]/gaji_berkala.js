@@ -31,7 +31,7 @@ function Kp4({ response }) {
             <div className="rounded-t bg-white mb-0 px-6 py-6">
               <div className="flex justify-between">
                 <h6 className="text-slate-700 text-xl font-bold capitalize">
-                  Berkas kp4
+                  Berkas Gaji Berkala
                   <p className="text-sm font-light mt-">{pegawai?.name}</p>
                 </h6>
               </div>
@@ -47,51 +47,33 @@ function Kp4({ response }) {
                 ) : (
                   <div className="grid grid-cols-3 gap-2">
                     <FileInput
-                      label="SK CPNS"
-                      fileValue={pegawai?.cpns}
-                      field="cpns"
+                      label="Surat Pengatar Pimpinan"
+                      fileValue={pegawai?.pengantar_pimpinan}
+                      field="pengantar_pimpinan"
                       id={pid}
                     />
                     <FileInput
-                      label="SK Pangkat Terakhir"
-                      fileValue={pegawai?.sk_pangkat}
-                      field="sk_pangkat"
+                      label="KGB"
+                      fileValue={pegawai?.kgb}
+                      field="kgb"
                       id={pid}
                     />
                     <FileInput
-                      label="NPWP"
-                      fileValue={pegawai?.npwp}
-                      field="npwp"
+                      label="SK Kenaikan Pangkat"
+                      fileValue={pegawai?.kenaikan_pangkat}
+                      field="kenaikan_pangkat"
                       id={pid}
                     />
                     <FileInput
-                      label="Kartu Tanda Penduduk"
-                      fileValue={pegawai?.ktp}
-                      field="ktp"
+                      label="SK Pelantikan Terakhir"
+                      fileValue={pegawai?.pelantikan_terakhir}
+                      field="pelantikan_terakhir"
                       id={pid}
                     />
                     <FileInput
-                      label="Konversi NIP"
-                      fileValue={pegawai?.konsersi_nip}
-                      field="konsersi_nip"
-                      id={pid}
-                    />
-                    <FileInput
-                      label="Akta Nikah"
-                      fileValue={pegawai?.akta_nikah}
-                      field="akta_nikah"
-                      id={pid}
-                    />
-                    <FileInput
-                      label="Akta kelahiran Anak"
-                      fileValue={pegawai?.akta_kelahiran_anak}
-                      field="akta_kelahiran_anak"
-                      id={pid}
-                    />
-                    <FileInput
-                      label="Ket. Kuliah Anak"
-                      fileValue={pegawai?.ket_kuliah}
-                      field="ket_kuliah"
+                      label="SKP 1 Tahun Terakhir"
+                      fileValue={pegawai?.skp_1tahun}
+                      field="skp_1tahun"
                       id={pid}
                     />
                   </div>

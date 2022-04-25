@@ -6,7 +6,7 @@ import axios from "axios";
 function Gaji({ jabatan }) {
   const getData = () => {
     axios
-      .get("/api/pangkat")
+      .get("/api/gaji")
       .then((res) => {
         setDatalist(res.data.data);
         console.log(res.data.data);
