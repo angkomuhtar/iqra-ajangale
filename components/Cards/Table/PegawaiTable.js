@@ -248,9 +248,11 @@ export default function PegawaiTable({ color }) {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div className="flex items-center space-x-1">
-                          <button className="border border-green-400 p-1 rounded-sm text-green-400 text-sm cursor-pointer">
-                            <AiOutlineEdit />
-                          </button>
+                          <Link href={`admin/pegawai/${val.pegawai}/edit`}>
+                            <button className="border border-green-400 p-1 rounded-sm text-green-400 text-sm cursor-pointer">
+                              <AiOutlineEdit />
+                            </button>
+                          </Link>
                           <button
                             className="bg-red-400 p-1 rounded-sm text-white text-sm cursor-pointer"
                             onClick={() => Hapus(val.id)}

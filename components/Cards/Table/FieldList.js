@@ -13,7 +13,6 @@ const FieldList = ({ data, id }) => {
           ) : (
             <a
               href={`/berkas/${id}/${data}`}
-              download
               target="_blank"
               rel="noreferrer"
               className="flex justify-center items-center"
