@@ -8,6 +8,7 @@ import TableDropdown from "components/Dropdowns/TableDropdown.js";
 import Link from "next/link";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 export default function PegawaiTable({ color }) {
   const [pegawai, setPegawai] = useState([]);
@@ -176,12 +177,14 @@ export default function PegawaiTable({ color }) {
                         <div className="h-10 w-10 relative">
                           <Image
                             alt=""
+                            width={300}
+                            height={300}
                             src={
-                              val.photo
-                                ? `/berkas/${val.id}/${val.photo}`
+                              val.photo3x4
+                                ? `/berkas/${val.id}/${val.photo3x4}`
                                 : "/img/react.jpg"
                             }
-                            layout="fill"
+                            layout="intrinsic"
                             className=" bg-white rounded-full border "
                           ></Image>
                         </div>
@@ -208,42 +211,69 @@ export default function PegawaiTable({ color }) {
                         </div>
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div className="flex items-center">
-                          <span className="mr-2">{pensiun}%</span>
-                          <div className="relative w-full">
-                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                              <div
-                                style={{ width: `${pensiun}%` }}
-                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                              ></div>
+                        <div className="items-center">
+                          <div className="flex items-center">
+                            <span className="mr-2">{pensiun}%</span>
+                            <div className="relative w-full">
+                              <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                                <div
+                                  style={{ width: `${pensiun}%` }}
+                                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                                ></div>
+                              </div>
                             </div>
                           </div>
+                          <p className="font-semibold mt-2 text-center">
+                            (
+                            {moment(val.tgl_lahir)
+                              .add(58, "y")
+                              .format("DD-MM-YYYY")}
+                            )
+                          </p>
                         </div>
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div className="flex items-center">
-                          <span className="mr-2">{pangkat}%</span>
-                          <div className="relative w-full">
-                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                              <div
-                                style={{ width: `${pangkat}%` }}
-                                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
-                              ></div>
+                        <div className="items-center">
+                          <div className="flex items-center">
+                            <span className="mr-2">{pangkat}%</span>
+                            <div className="relative w-full">
+                              <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                                <div
+                                  style={{ width: `${pangkat}%` }}
+                                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                                ></div>
+                              </div>
                             </div>
                           </div>
+                          <p className="font-semibold mt-2 text-center">
+                            (
+                            {moment(val.tmt_pangkat)
+                              .add(4, "y")
+                              .format("DD-MM-YYYY")}
+                            )
+                          </p>
                         </div>
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <div className="flex items-center">
-                          <span className="mr-2">{gaji}%</span>
-                          <div className="relative w-full">
-                            <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
-                              <div
-                                style={{ width: `${gaji}%` }}
-                                className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500`}
-                              ></div>
+                        <div className="items-center">
+                          <div className="flex items-center">
+                            <span className="mr-2">{gaji}%</span>
+                            <div className="relative w-full">
+                              <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200 min-w-[60px]">
+                                <div
+                                  style={{ width: `${gaji}%` }}
+                                  className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500`}
+                                ></div>
+                              </div>
                             </div>
                           </div>
+                          <p className="font-semibold mt-2 text-center">
+                            (
+                            {moment(val.gaji_berkala)
+                              .add(2, "y")
+                              .format("DD-MM-YYYY")}
+                            )
+                          </p>
                         </div>
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
