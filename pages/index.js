@@ -6,6 +6,7 @@ import Router from "next/router";
 import animationData from "/components/9844-loading-40-paperplane";
 import Lottie from "react-lottie";
 import { getCookie, setCookies } from "cookies-next";
+import Image from "next/image";
 
 export default function Login() {
   const [field, setField] = useState({
@@ -89,7 +90,11 @@ export default function Login() {
               <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
                 <div className="rounded-t mb-0 p-3 flex justify-center bg-slate-500">
                   <div className="btn-wrapper text-center">
-                    <img className="mr-1 w-[12rem]" src="/img/brand/iqra.png" />
+                    <Image
+                      layout="fill"
+                      className="mr-1 w-[12rem]"
+                      src="/img/brand/iqra.png"
+                    />
                   </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10">

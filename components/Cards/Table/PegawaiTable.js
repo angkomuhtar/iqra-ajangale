@@ -227,7 +227,7 @@ export default function PegawaiTable({ color }) {
                             (
                             {moment(val.tgl_lahir)
                               .add(58, "y")
-                              .format("DD-MM-YYYY")}
+                              .format("DD-MMM-YYYY")}
                             )
                           </p>
                         </div>
@@ -249,7 +249,7 @@ export default function PegawaiTable({ color }) {
                             (
                             {moment(val.tmt_pangkat)
                               .add(4, "y")
-                              .format("DD-MM-YYYY")}
+                              .format("DD-MMM-YYYY")}
                             )
                           </p>
                         </div>
@@ -271,7 +271,7 @@ export default function PegawaiTable({ color }) {
                             (
                             {moment(val.gaji_berkala)
                               .add(2, "y")
-                              .format("DD-MM-YYYY")}
+                              .format("DD-MMM-YYYY")}
                             )
                           </p>
                         </div>
