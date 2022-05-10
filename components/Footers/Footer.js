@@ -69,7 +69,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         About Us
                       </a>
@@ -77,7 +77,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Blog
                       </a>
@@ -85,7 +85,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://www.github.com/creativetimofficial?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Github
                       </a>
@@ -93,7 +93,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/bootstrap-themes/free?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Free Products
                       </a>
@@ -108,7 +108,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         MIT License
                       </a>
@@ -116,7 +116,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/terms?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Terms & Conditions
                       </a>
@@ -124,7 +124,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/privacy?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Privacy Policy
                       </a>
@@ -132,7 +132,7 @@ export default function Footer() {
                     <li>
                       <a
                         className="text-slate-600 hover:text-slate-800 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/contact-us?ref=nnjs-footer"
+                        href="http://angko.herokuapp.com/"
                       >
                         Contact Us
                       </a>
@@ -148,7 +148,7 @@ export default function Footer() {
               <div className="text-sm text-slate-500 font-semibold py-1">
                 Copyright © {new Date().getFullYear()} Notus NextJS by{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer"
+                  href="http://angko.herokuapp.com/"
                   className="text-slate-500 hover:text-slate-800"
                 >
                   Creative Tim

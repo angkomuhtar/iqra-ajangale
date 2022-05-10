@@ -90,7 +90,7 @@ export default function Login() {
               <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white border-0">
                 <div className="rounded-t mb-0 p-3 flex justify-center bg-slate-500">
                   <div className="btn-wrapper text-center">
-                    <Image
+                    <img
                       layout="fill"
                       className="mr-1 w-[12rem]"
                       src="/img/brand/iqra.png"
